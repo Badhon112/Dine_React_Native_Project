@@ -1,11 +1,7 @@
-import RenderItem from "@/components/RenderItem";
-import upload from "@/store/bulkUpload";
-import { restaurants } from "@/store/Resturent";
+import OurRestaurants from "@/components/OurRestaurants";
 import { BlurView } from "expo-blur";
-import React, { useEffect } from "react";
+import React from "react";
 import {
-  ActivityIndicator,
-  FlatList,
   ImageBackground,
   Platform,
   ScrollView,
@@ -15,17 +11,6 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 const homeBanner = require("../../assets/images/homeBanner.png");
 const Home = () => {
-  const init = async () => {
-    try {
-      await upload();
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  useEffect(() => {
-    init();
-  }, []);
   return (
     <SafeAreaView style={{ backgroundColor: "#2b2b2b", height: "100%" }}>
       <View className="flex items-center p-3">
@@ -54,23 +39,8 @@ const Home = () => {
             </Text>
           </BlurView>
         </ImageBackground>
-        <View className="p-4 bg-[#2b2b2b] flex-row items-center">
-          <Text className="text-3xl text-[#f49b33] mr-2 font-semibold">
-            Our Restaurants
-          </Text>
-        </View>
-        {restaurants.length > 0 ? (
-          <FlatList
-            data={restaurants}
-            renderItem={RenderItem}
-            horizontal
-            contentContainerStyle={{ padding: 16 }}
-            showsHorizontalScrollIndicator={false}
-            scrollEnabled={true}
-          />
-        ) : (
-          <ActivityIndicator animating color={"#fb9b33"} />
-        )}
+
+        <OurRestaurants />
       </ScrollView>
     </SafeAreaView>
   );
