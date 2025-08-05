@@ -1,4 +1,5 @@
 // import CarouselItem from "@/components/carouselItem";
+import DatePicker from "@/components/resturent/DatePicker";
 import { db } from "@/config/fireBaseConfig";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
@@ -238,6 +239,15 @@ const restuarents = () => {
               Get Direction
             </Text>
           </Text>
+        </View>
+        <View className="flex-1 flex-row items-center p-2">
+          <Ionicons name="time" size={24} color={"#f49b33"} />
+          <Text className="max-w-[75%] mx-2 font-semibold text-white">
+            {resturentsData.opening} - {resturentsData?.closing}
+          </Text>
+        </View>
+        <View>
+          <DatePicker />
         </View>
       </ScrollView>
     </SafeAreaView>
